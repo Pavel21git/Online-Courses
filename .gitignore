@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+.env
+
+# Python cache
+_pycache_/
+*.py[cod]
+
+# Django files
+*.sqlite3
+db.sqlite3
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Media and static (если не нужно в репозиторий)
+media/
+staticfiles/
+
+# Migrations (если не хочешь их пушить)
+*/migrations/_pycache_/
+*.pyc
