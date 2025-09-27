@@ -1,13 +1,44 @@
-# Virtual environment
-venv/
-.env
-_pycache_/
+# --- Python / Django ---
+__pycache__/
 *.py[cod]
-*.sqlite3
-db.sqlite3
-.vscode/
+*$py.class
 *.log
-media/
+
+# База данных (локально)
+db.sqlite3
+*.sqlite3
+
+# Виртуальное окружение
+venv/
+.venv/
+
+# Секреты/конфиги
+.env
+.env.*
+
+# IDE/редактор
+.vscode/
+.idea/
+
+# Тесты/линтеры/типизация
+.pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Сборка/кэш
+dist/
+build/
+*.egg-info/
+
+# Django collectstatic (СТАТИЧЕСКИЙ ВЫВОД)
+# Оставляй app/static в репо, игнорь только STATIC_ROOT.
+# Если у тебя STATIC_ROOT=staticfiles — оставь так:
 staticfiles/
-**/migrations/_pycache_/
-*.pyc
+
+# Медиа-загрузка пользователей
+media/
+
+# Кэш внутри миграций (сами миграции коммитим!)
+**/migrations/__pycache__/
