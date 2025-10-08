@@ -3,19 +3,19 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)  # ← добавили
 
-    def _str_(self):
-        return self.title
+    def __str__(self): return self.title
 
 class Lesson(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="lessons")
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=1)  # ← добавили
 
-    def _str_(self):
-        return self.title
+    class Meta: ordering = ["order"]
+    def __str__(self): return self.title
 
 class Document(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
