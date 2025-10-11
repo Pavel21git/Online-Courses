@@ -5,20 +5,15 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
-def health(_request):
+def health(_):
     return JsonResponse({"status": "ok"})
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
-    # API (DRF router находится в courses/api_urls.py)
     path("api/", include("courses.api_urls")),
-
-    # Health-check
     path("health/", health),
     path("api/health/", health),
 ]
 
-# Раздача MEDIA в режиме разработки
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
